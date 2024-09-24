@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" href="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class = "container-fluid">
+    <div class = "text-center"><h2>[[${pageTitle}]]</h2></div>
+    <form th:action="@{/save}" method="post" th:object="${hocsinh}"
+        style="max-width: 500px; margin: 0 auto;">
+        <input type="hidden" th:field="*{id}">
+        <div class = "border border-secondary rounded p-3">
+
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Họ tên:</label>
+                <div class = "col-sm-8">
+                    <input type="text" th:field = "*{hoten}" class = "form-control" required/>
+                </div>
+            </div>
+
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Giới tính:</label>
+                <div class = "col-sm-8">
+<!--                    <input type="text" th:field = "*{hoten}" class = "form-control"/>-->
+                    <select th:field = "*{gioitinh}" required>
+                        <option th:value="Nam">Nam</option>
+                        <option th:value="Nữ">Nữ</option>
+                        <option th:value="Khác">Khác</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Ngày sinh:</label>
+                <div class = "col-sm-8">
+                    <input type="date" th:field = "*{ngaysinh}" class = "form-control" required/>
+                </div>
+            </div>
+
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Email:</label>
+                <div class = "col-sm-8">
+                    <input type="email" th:field = "*{email}" class = "form-control"/>
+                </div>
+            </div>
+
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Số điện thoại:</label>
+                <div class = "col-sm-8">
+                    <input type="tel" th:field = "*{sdt}" class = "form-control"/>
+                </div>
+            </div>
+
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Lớp:</label>
+                <div class = "col-sm-8">
+                    <select th:field = "*{lop}">
+                        <option th:value="L6A1">6A1</option>
+                        <option th:value="L6A2">6A2</option>
+                        <option th:value="L6A3">6A3</option>
+                        <option th:value="L7A1">7A1</option>
+                        <option th:value="L7A2">7A2</option>
+                        <option th:value="L7A3">7A3</option>
+                        <option th:value="L8A1">8A1</option>
+                        <option th:value="L8A2">8A2</option>
+                        <option th:value="L8A3">8A3</option>
+                        <option th:value="L9A1">9A1</option>
+                        <option th:value="L9A2">9A2</option>
+                        <option th:value="L9A3">9A3</option>
+                    </select>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm toán:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.toan}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm anh:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.anh}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm văn:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.van}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm lý:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.ly}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm hóa:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.hoa}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm sinh:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.sinh}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm sử:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.su}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label">Điểm địa:</label>
+                <div class = "col-sm-8">
+                    <input type="number" min = "0" max = "10.0" step = "0.1" th:field = "*{diem.dia}" class = "form-control"/>
+                </div>
+            </div>
+            <div class = "text-center">
+                <button type = "submit" class = "btn btn-primary">Lưu</button>
+                <button type = "button" class = "btn btn-secondary" onclick="returnHomePage()">Hủy</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function returnHomePage(){
+        window.location = "[[@{/}]]";
+    }
+</script>
+</body>
+</html>

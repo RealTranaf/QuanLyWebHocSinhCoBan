@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách học sinh</title>
+    <link rel="stylesheet" href="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class = "container-fluid text-center">
+    <a class = "h2" href = "/">Danh sách học sinh</a>
+    <div class = "m-2">
+        <a class = "btn btn-primary mb-1" th:href="@{/new}">Thêm học sinh</a>
+    </div>
+    <form class = "m-2" th:action="@{/page/1}" method="get">
+        <input type="text" name = "searchField" id = "searchField" th:value="${searchField}"/>
+        <input type="text" name = "keyword" id = "keyword" th:value="${keyword}" required/>&nbsp;
+        <input type="submit" class = "btn btn-secondary mb-1" value = "Tìm kiếm"/> &nbsp;
+    </form>
+    <div>
+        <table class = "table table-bordered">
+            <thead class = "thead-dark">
+                <tr>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} + '&keyword=' + ${keyword} }">
+                            ID</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=hoten&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Họ tên</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=gioitinh&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Giới tính</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=ngaysinh&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Ngày sinh</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Email</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=sdt&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Số điện thoại</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Lớp</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Toán</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Anh</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Văn</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Lý</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Hóa</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Sinh</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Sử</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=lop&sortDir=' + ${reverseSortDir} + '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">
+                            Địa</a>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="hocsinh : ${hocsinhList}">
+                <tr>
+                    <td>[[${hocsinh.id}]]</td>
+                    <td>[[${hocsinh.hoten}]]</td>
+                    <td>[[${hocsinh.gioitinh}]]</td>
+                    <td>[[${hocsinh.ngaysinh}]]</td>
+                    <td>[[${hocsinh.email}]]</td>
+                    <td>[[${hocsinh.sdt}]]</td>
+                    <td>[[${hocsinh.lop}]]</td>
+                    <td>[[${hocsinh.diem.toan}]]</td>
+                    <td>[[${hocsinh.diem.anh}]]</td>
+                    <td>[[${hocsinh.diem.van}]]</td>
+                    <td>[[${hocsinh.diem.ly}]]</td>
+                    <td>[[${hocsinh.diem.hoa}]]</td>
+                    <td>[[${hocsinh.diem.sinh}]]</td>
+                    <td>[[${hocsinh.diem.su}]]</td>
+                    <td>[[${hocsinh.diem.dia}]]</td>
+                    <td>
+                        <a class = "btn btn-primary" th:href="@{'/edit/' + ${hocsinh.id}}">Sửa</a>
+                        <a class = "btn btn-danger" th:href="@{'/delete/' + ${hocsinh.id}}">Xóa</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${totalPages > 1}">
+        <div class = "row">
+            <div class = "col-sm-2">
+                Tổng số học sinh: [[${totalHocsinh}]]
+            </div>
+            <div class = "col-sm-1"></div>
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                    <a th:if = "${currentPage!= i}"th:href="@{'/page/'+${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}+ '&searchField=' + ${searchField} +'&keyword=' + ${keyword} }">[[${i}]]</a>
+                    <span th:unless="${currentPage!= i}">[[${i}]]</span> &nbsp; &nbsp;
+                </span>
+            <div class = "col-sm-1">
+                <a th:if = "${currentPage < totalPages}"th:href="@{'/page/'+${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}+ '&searchField=' + ${searchField} +'&keyword=' + ${keyword}}">Tiếp</a>
+                <span th:unless="${currentPage < totalPages}">Tiếp</span>
+            </div>
+            <div class = "col-sm-1">
+                <a th:if = "${currentPage < totalPages}"th:href="@{'/page/'+${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}+ '&searchField=' + ${searchField} +'&keyword=' + ${keyword}}">Trang cuối</a>
+                <span th:unless="${currentPage < totalPages}">Trang cuối</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function returnHomePage(){
+        window.location = "[[@{/}]]";
+    }
+</script>
+</body>
+</html>
